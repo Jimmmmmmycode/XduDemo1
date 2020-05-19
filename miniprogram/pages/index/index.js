@@ -6,10 +6,62 @@ Page({
     avatarUrl: './user-unlogin.png',
     userInfo: {},
     logged: false,
-    takeSession: false,
-    requestResult: ''
+    takeSession:false,
+    requestResult: '',
+    indicatorDots:true,
+    autoplay: true,
+    indicatorColor: '#fedb00',
+    interval: 2000,
+    duration: 400,
+    autoForce: true,
+    keyword:'',
+    imgUrls:[
+      {
+        id:1,
+        url:'/images/1.jpg'
+
+      },
+      {
+        id:2,
+        url:'/images/2.jpg'
+      }
+    ],
+    imgUrlsOne:[
+      {
+        id:1,
+        url:'/images/up.png',
+        title:'我要发布'
+      },
+      {
+        id:2,
+        url:'/images/up1.png',
+        title:'任务广场'
+      }
+    ]
+  },
+  
+  goSearch(e) {
+    wx.navigateTo({
+      url: '/pages/search/search',
+    })
   },
 
+  goDetail(e) {
+    wx.navigateTo({
+      url: '/pages/detail/detail',
+    })
+  },
+
+  goSeaver(e){
+      var $id=e.currentTarget.dataset.id;
+      console.log($id)
+      if($id==1)wx.navigateTo({
+        url: '/pages/publish_help_info/publish_help_info',
+      })
+      else wx.navigateTo({
+        url: '/pages/plaza/plaza',
+      })
+  },
   onLoad: function() {
     if (!wx.cloud) {
       wx.redirectTo({
@@ -116,5 +168,59 @@ Page({
       }
     })
   },
-
+  onLoad: function (options) {
+    that = this;
+  },
+  //input框失焦
+  blursearch: function (event) {
+    that.setData({
+      autoFocus: false,
+    });
+  },
+  //input框聚焦
+  inputfocus: function (e) {
+    
+  },
+  //联想
+  inputsearch: function (event) {
+    // 如果输入框有内容，展示联想
+    if (event.detail.value) {
+      that.setData({
+        keyWord: event.detail.value,
+        autoFocus: true
+      });
+    } else {
+      
+    }
+  }, 
+  // 搜索按钮
+  searchBtn: function () {
+    if (that.data.keyWord) {
+      
+    } else {
+      wx.showToast({
+        title: '请输入美食名',
+        icon: 'none',
+        duration: 1500
+      })
+    }
+  },
+  //键盘搜索
+  goSearch: function (event) {
+    if (that.data.keyWord) {
+      
+    } else {
+      wx.showToast({
+        title: '请输入美食名',
+        icon: 'none',
+        duration: 1500
+      })
+    }
+  },
+  //清空输入框
+  cancelword: function () {
+    that.setData({
+      keyWord: ''
+    });
+  },
 })
