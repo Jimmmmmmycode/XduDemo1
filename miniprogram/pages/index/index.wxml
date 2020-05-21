@@ -1,6 +1,5 @@
 <!--index.wxml-->
-
-  <view class='top'>
+<view class='top'>
    <view class='shasbg'>
   <view class='searview'>
     <icon class='icon-search'></icon>
