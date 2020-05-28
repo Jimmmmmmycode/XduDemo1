@@ -337,7 +337,8 @@ page {
 
 }
 .low .btn{
-  width: 80%;
+  height:40rpx;
+  width: 60%;
   margin-top: 20rpx;
   background-color: rgb(233, 113, 113);
   color: rgb(5, 4, 4);

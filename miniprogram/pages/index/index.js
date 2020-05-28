@@ -15,7 +15,7 @@ Page({
     duration: 400,
     autoForce: true,
     keyword:'',
-    imgUrls:[
+    imgPaths:[
       {
         id:1,
         url:'/images/1.jpg'
@@ -25,8 +25,12 @@ Page({
         id:2,
         url:'/images/2.jpg'
       }
-    ],
-    imgUrlsOne:[
+    ], // Swiper组件中图片的路径 , url采用相对路径表达 , 绑定到block的 wx:for后面
+
+
+     // 主页按钮的矢量图标路径及属性，id决定了后面navigate到哪个页面
+     // 绑定到wx:for后面
+    imgIcons:[
       {
         id:1,
         url:'/images/up.png',
@@ -40,54 +44,45 @@ Page({
     ]
   },
   
-  goSearch(e) {
-    wx.navigateTo({
-      url: '/pages/search/search',
-    })
-  },
 
+  // 点击滑动框中的图片时进入图片详情页
   goDetail(e) {
     wx.navigateTo({
       url: '/pages/detail/detail',
-    })
+    })  
   },
 
-  goSeaver(e){
+
+  //button的跳转功能集合，由id来进行条件判断决定跳转到哪个页面
+  gofunction(e){
       var $id=e.currentTarget.dataset.id;
       console.log($id)
+
+      // id为1时，跳转到我要发布的页面 IWanToPost
       if($id==1)wx.navigateTo({
-        url: '/pages/publish_help_info/publish_help_info',
+        url: '/pages/IWanToPost/IWanToPost'
       })
-      else wx.navigateTo({
-        url: '/pages/plaza/plaza',
+      
+      // id为2时，跳转到任务广场页面
+      if($id==2)wx.navigateTo({
+        url: 'pages/HelpPlaza/HelpPlaza',
       })
+
+      // 后面有其他按钮在这里继续添加
+
   },
+
+
+  // 页面初次加载时候执行的操作
+
   onLoad: function() {
-    if (!wx.cloud) {
-      wx.redirectTo({
-        url: '../chooseLib/chooseLib',
-      })
-      return
-    }
-
-    // 获取用户信息
-    wx.getSetting({
-      success: res => {
-        if (res.authSetting['scope.userInfo']) {
-          // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-          wx.getUserInfo({
-            success: res => {
-              this.setData({
-                avatarUrl: res.userInfo.avatarUrl,
-                userInfo: res.userInfo
-              })
-            }
-          })
-        }
-      }
-    })
+    
   },
 
+
+
+
+   // 下面这些函数在这个页面用不上,但可能在其他页面会用上
   onGetUserInfo: function(e) {
     if (!this.data.logged && e.detail.userInfo) {
       this.setData({
@@ -167,60 +162,5 @@ Page({
         console.error(e)
       }
     })
-  },
-  onLoad: function (options) {
-    that = this;
-  },
-  //input框失焦
-  blursearch: function (event) {
-    that.setData({
-      autoFocus: false,
-    });
-  },
-  //input框聚焦
-  inputfocus: function (e) {
-    
-  },
-  //联想
-  inputsearch: function (event) {
-    // 如果输入框有内容，展示联想
-    if (event.detail.value) {
-      that.setData({
-        keyWord: event.detail.value,
-        autoFocus: true
-      });
-    } else {
-      
-    }
-  }, 
-  // 搜索按钮
-  searchBtn: function () {
-    if (that.data.keyWord) {
-      
-    } else {
-      wx.showToast({
-        title: '请输入美食名',
-        icon: 'none',
-        duration: 1500
-      })
-    }
-  },
-  //键盘搜索
-  goSearch: function (event) {
-    if (that.data.keyWord) {
-      
-    } else {
-      wx.showToast({
-        title: '请输入美食名',
-        icon: 'none',
-        duration: 1500
-      })
-    }
-  },
-  //清空输入框
-  cancelword: function () {
-    that.setData({
-      keyWord: ''
-    });
-  },
+  }
 })
