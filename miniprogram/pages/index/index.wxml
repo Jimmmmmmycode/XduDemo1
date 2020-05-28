@@ -1,18 +1,7 @@
-<!--index.wxml-->
-<view class='top'>
-   <view class='shasbg'>
-  <view class='searview'>
-    <icon class='icon-search'></icon>
-    <view class='searall'>
-      <input type='text' placeholder="搜索您关心的信息" value='{{keyWord}}' confirm-type='search' focus="{{autoFocus}}" bindconfirm='goSearch' bindblur="blursearch" bindinput='inputsearch' bindfocus="inputfocus"></input>
-      <icon class='icon-cancel' bindtap='cancelword' wx:if='{{keyWord}}'></icon>
-    </view>
-    <button bindtap='searchBtn'>搜索</button>
-  </view>
-</view>
-  </view>
+
+<!-- 主页的wxml文件-->
   <swiper class='swiper' indicator-dots="{{indicatorDots}}" indicator-color="{{indicatorColor}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
-    <block wx:for="{{imgUrls}}" wx:key='{{index}}'>
+    <block wx:for="{{imgPaths}}" wx:key='{{index}}'>
       <swiper-item>
         <image src="{{item.url}}" data-id='{{item.id}}' bindtap='goDetail' class="slide-image" />
       </swiper-item>
@@ -20,11 +9,9 @@
   </swiper>
   <view class='low'>
   <view class='like block'>
-    <view class='title'>
-      <text>征召墙</text>
-    </view>
-     
-    <button class='btn' wx:for='{{imgUrlsOne}}' wx:key='{{index}}' data-tags='{{item.id}}'  data-id='{{item.id}}' bindtap='goSeaver'>
+
+
+    <button class='btn' wx:for='{{imgIcons}}' wx:key='{{index}}' data-tags='{{item.id}}'  data-id='{{item.id}}' bindtap='gofunction'>
       <image class='btning' src='{{item.url}}'></image>
       <view>{{item.title}}</view>
     </button>
