@@ -132,6 +132,8 @@ Page({
     }
     this.setData(data);
   },
+
+  
   TimeChange(e) {
     this.setData({
       time: e.detail.value

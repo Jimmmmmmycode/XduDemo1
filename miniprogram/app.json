@@ -1,18 +1,6 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/userConsole/userConsole",
-    "pages/storageConsole/storageConsole",
-    "pages/databaseGuide/databaseGuide",
-    "pages/addFunction/addFunction",
-    "pages/deployFunctions/deployFunctions",
-    "pages/chooseLib/chooseLib",
-    "pages/openapi/openapi",
-    "pages/openapi/serverapi/serverapi",
-    "pages/openapi/callback/callback",
-    "pages/openapi/cloudid/cloudid",
-    "pages/im/im",
-    "pages/im/room/room",
     "pages/IWanToPost/IWanToPost",
     "pages/HelpPlaza/HelpPlaza"
   ],
@@ -22,6 +10,9 @@
     "navigationBarBackgroundColor": "#F6F6F6",
     "navigationBarTitleText": "XDU校园互助平台",
     "navigationBarTextStyle": "black"
+  },
+  "usingComponents": {
+    "cu-custom": "/colorui/components/cu-custom"
   },
   "sitemapLocation": "sitemap.json",
   "style": "v2"

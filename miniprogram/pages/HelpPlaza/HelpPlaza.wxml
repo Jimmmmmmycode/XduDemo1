@@ -1,3 +1,39 @@
 <!--miniprogram/pages/HelpPlaza/HelpPlaza.wxml-->
 
-<text>任务广场页面</text>
+ <cu-custom bgColor="bg-gradual-red" >  <!--bgcolor - 顶部颜色 -->
+  <view slot="content">求助广场</view>
+</cu-custom>
+
+
+<view class="cu-bar bg-white solid-bottom">
+  <view class="action">
+    <text class="cuIcon-title text-blue"></text>最新订单
+  </view>
+</view>
+
+
+<view wx:for="{{display}}" wx:key="{{index}}" class="cu-card dynamic ">
+  <view class="cu-item padding shadow">
+    <view class="cu-list menu-avatar">
+      <view class="cu-item">
+       <view class="cu-avatar squre lg" style="background-image:url({{display[index]['url']}});"></view>
+        <view class="content flex-subb">
+           <view class="text-content">
+           {{display[index]['title']}}
+           </view>
+          <view class="text-red text-sm flex">
+            截止时间: {{display[index]['date']}} {{display[index]['time']}} 
+      </view>
+        </view>
+      </view>
+    </view>
+    <view class="text-content">
+       {{display[index]['detail']}}
+    </view>
+    <view class="grid flex-sub padding-lr {{isCard?'col-3 grid-square':'col-1'}}">
+    <view class="bg-img {{isCard?'':'only-img'}}" style="background-image:url({{display[index]['imgurl']}});" >
+    </view>
+    </view>
+    </view>
+    </view>
+

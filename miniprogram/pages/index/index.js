@@ -3,52 +3,55 @@ const app = getApp()
 
 Page({
   data: {
-    avatarUrl: './user-unlogin.png',
-    userInfo: {},
-    logged: false,
-    takeSession:false,
-    requestResult: '',
-    indicatorDots:true,
-    autoplay: true,
-    indicatorColor: '#fedb00',
-    interval: 2000,
-    duration: 400,
-    autoForce: true,
-    keyword:'',
-    imgPaths:[
-      {
-        id:1,
-        url:'/images/1.jpg'
-
-      },
-      {
-        id:2,
-        url:'/images/2.jpg'
-      }
-    ], // Swiper组件中图片的路径 , url采用相对路径表达 , 绑定到block的 wx:for后面
-
+    cardCur: 0,
+    swiperList: [{
+      id: 0,
+      type: 'image',
+      url: 'https://w.wallhaven.cc/full/6k/wallhaven-6k3oox.jpg'
+    }, {
+      id: 1,
+        type: 'image',
+        url: 'https://w.wallhaven.cc/full/r2/wallhaven-r2ze21.jpg',
+    }, {
+      id: 2,
+      type: 'image',
+      url: 'https://w.wallhaven.cc/full/ox/wallhaven-oxv6gl.png'
+    }, 
+  ],
 
      // 主页按钮的矢量图标路径及属性，id决定了后面navigate到哪个页面
      // 绑定到wx:for后面
     imgIcons:[
       {
         id:1,
-        url:'/images/up.png',
-        title:'我要发布'
+        url:'../../images/post.png',
+        title:'发布求助'
       },
+      
       {
         id:2,
-        url:'/images/up1.png',
-        title:'任务广场'
+        url:'../../images/plaza.png',
+        title:'求助广场'
+      } , 
+      {
+        id:3,
+        url:'../../images/plaza.png',
+        title:'我的求助'
       }
     ]
   },
   
+  // cardSwiper
+  cardSwiper(e) {
+    this.setData({
+      cardCur: e.detail.current
+    })
+  },
 
   // 点击滑动框中的图片时进入图片详情页
   goDetail(e) {
     wx.navigateTo({
-      url: '/pages/detail/detail',
+      url: '../pages/detail/detail',
     })  
   },
 
@@ -57,18 +60,18 @@ Page({
   gofunction(e){
       var $id=e.currentTarget.dataset.id;
       console.log($id)
-
       // id为1时，跳转到我要发布的页面 IWanToPost
       if($id==1)wx.navigateTo({
-        url: '/pages/IWanToPost/IWanToPost'
+        url: '../IWanToPost/IWanToPost'
       })
-      
       // id为2时，跳转到任务广场页面
-      if($id==2)wx.navigateTo({
-        url: 'pages/HelpPlaza/HelpPlaza',
+      if($id==2) wx.navigateTo({
+        url:'../HelpPlaza/HelpPlaza',
       })
 
+
       // 后面有其他按钮在这里继续添加
+
 
   },
 

@@ -7,6 +7,7 @@
     <switch class='sm' checked='{{isCard}}' bindchange='isCard'></switch>
   </view>
 </view>
+
 <view class="cu-card case {{isCard?'no-card':''}}">
   <view class="cu-item shadow">
     <view class="image">
@@ -33,11 +34,11 @@
       </view>
     </view>
   </view>
-
 </view>
+
 <view class="cu-bar bg-white solid-bottom {{isCard?'margin-top':''}}">
   <view class='action'>
-    <text class='cuIcon-titles text-orange '></text> 动态类卡片
+    <text class='cuIcon-titles text-orange '></text>动态类卡片
   </view>
   <view class='action'>
     <switch class='sm' checked='{{isCard}}' bindchange='isCard'></switch>

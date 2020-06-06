@@ -18,7 +18,7 @@
 </swiper>
 <view class="cu-bar bg-white margin-top">
   <view class="action">
-    <text class="cuIcon-title text-pink"></text> 卡片式轮播
+    <text class="cuIcon-title text-pink"></text>卡片式轮播
   </view>
 </view>
 <swiper class="card-swiper {{DotStyle?'square-dot':'round-dot'}}" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500" bindchange="cardSwiper" indicator-color="#8799a3" indicator-active-color="#0081ff">
