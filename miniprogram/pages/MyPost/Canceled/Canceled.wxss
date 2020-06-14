@@ -1,0 +1,10 @@
+/* pages/MyPost/Canceled/Canceled.wxss */
+
+@import "../../../colorui/main.wxss";
+@import "../../../colorui/icon.wxss";
+
+
+.wsui-btn__hover_list {
+  opacity: 0.9;
+  background: #f7f7f7;
+}

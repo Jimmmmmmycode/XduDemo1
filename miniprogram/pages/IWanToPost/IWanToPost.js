@@ -1,21 +1,25 @@
 // miniprogram/pages/IWanToPost/IWanToPost.js
+const app = getApp()
+const db = wx.cloud.database() // 获取数据库引用
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
     date: '2020-6-4', // 截止日期
     time: '00:00',  // 截止时间
     sexpicker: ['男', '女', '男女皆可'],
-    index:null, // sexpicker的索引
+    index:2, // sexpicker的索引
     require_sex:null,
     imgList: [],  // 图片
     title:null,   //标题
     detail:null,  //细节
     payment:null , //金额,
-    postselfinfo:false  // 
+    postselfinfo:false,  // 是否上传个人信息
+    allowEveryone:false,
+    helpid: '',
+    fileIDs : [] 
   },
 
 
@@ -123,7 +127,7 @@ Page({
     })
   },
 
-
+  //  用户是否愿意上传个人信息
   changeprivacy(e){
 
     if(this.data.postselfinfo){
@@ -138,6 +142,23 @@ Page({
 
   },
 
+  // 
+  changeReceiveprivacy(e){
+
+    if(this.data.allowEveryone){
+      this.setData({
+        allowEveryone:false
+      })
+    }else{
+      this.setData({
+        allowEveryone:true
+      })
+     }
+     console.log(this.data.allowEveryone)
+     
+
+  },
+
   /*  绑定保存按钮的bindtap属性,点击后将用户本次的填写保存到本地缓存  */
   onSave:function() {
     
@@ -149,8 +170,77 @@ Page({
   
   /* 绑定提交按钮的bindtap属性，点击后向云数据库和云存储上传所有必要的数据 */
   onPost: function() {
+    if( this.data.detail==null||this.data.payment==null||this.data.title==null){
+      wx.showToast({
+        title: '请完善所有信息',
+      })
+      return;
+    }
+    wx.showLoading({
+      title: '提交中',
+    })
+    var that = this 
+    const promiseArr = [] 
+    for(let i=0;i<that.data.imgList.length;i++){
+        let filePath = that.data.imgList[i]
+        let suffix =  /\.[^\.]+$/.exec(filePath)[0]; // 正则表达式，获取文件扩展名
+        //在每次上传的时候，就往promiseArr里存一个promise，只有当所有的都返回结果时，才可以继续往下执行
+      promiseArr.push(new Promise((reslove,reject)=>{
+        // 云存储接口
+        wx.cloud.uploadFile({
+          cloudPath: "help_info_img/"+ app.globalData.openid+"/"+new Date().getTime() + suffix,
+          filePath: filePath, // 文件路径
+        }).then(res => {
+          // get resource ID
+          console.log(res.fileID)
+          that.setData({
+            fileIDs: that.data.fileIDs.concat(res.fileID)
+          })
+          reslove()
+        }).catch(error => {
+          console.log(error)
+        })
+      }))
+    }
+    Promise.all(promiseArr).then(res=>{
+    db.collection('help_info').add({
+      data:{
+        title:that.data.title, 
+        detail:that.data.detail,
+        payment:that.data.payment,
+        date:that.data.date, // 截止日期
+        time:that.data.time,  // 截止时间
+        require_sex:that.data.require_sex,  
+        receivestatus: false , // 是否已接单
+        finishstatus: false , // 是否已完成
+        cancelstatus: false , // 是否已取消
+        allowEveryone:that.data.allowEveryone , //是否同意所有人接单
+        avatarurl: app.globalData.userInfo.avatarUrl, // 用户头像
+        nickname:app.globalData.userInfo.nickName,// 用户名
+        fileIDs:that.data.fileIDs  // 用户上传的图片
+      }    
+      ,
+      success:res=>{
+        console.log('[数据库][新增记录]成功，记录 _id: ', res._id)
+      },
+      fail:err=>{  
+        console.error('[数据库] [新增记录] 失败：', err)
+      }
+    })
+  }).then(res=>{
+    wx.hideLoading()
+    wx.showToast({
+      title: '新增记录成功',
+    })
+    console.log(res)
+  })
+    .catch(error=>{
+      console.log(error)
+    })
     
-  },
+  
+     
+ },
 
 
 

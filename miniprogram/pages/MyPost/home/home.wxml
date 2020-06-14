@@ -1,0 +1,12 @@
+<scroll-view scroll-x class="bg-gradual-blue nav text-center">
+  <view class="cu-item {{index==TabCur?'text-white cur':''}}" wx:for="{{tabtitle}}" wx:key bindtap="tabSelect" data-id="{{index}}">
+    {{tabtitle[index]}}
+  </view>
+</scroll-view>
+
+<AllPost wx:if="{{PageCur=='AllPost'}}"></AllPost>
+<WaitingToReceive wx:if="{{PageCur=='WaitingToReceive'}}"></WaitingToReceive>
+<InProgress wx:if="{{PageCur=='InProgress'}}"></InProgress>
+<Completed wx:if="{{PageCur=='Completed'}}"></Completed>
+<Canceled wx:if="{{PageCur=='Canceled'}}"></Canceled>
+

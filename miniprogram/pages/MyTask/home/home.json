@@ -1,0 +1,9 @@
+{
+  "component": true,
+  "usingComponents": {
+    "AllReceive":"../AllReceive/AllReceive",
+    "Canceled":"../Canceled/Canceled",
+    "InProgress":"../InProgress/InProgress",
+    "Completed":"../Completed/Completed"
+  }
+}

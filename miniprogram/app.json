@@ -2,7 +2,18 @@
   "pages": [
     "pages/index/index",
     "pages/IWanToPost/IWanToPost",
-    "pages/HelpPlaza/HelpPlaza"
+    "pages/HelpPlaza/HelpPlaza",
+    "pages/Myinfo/Myinfo",
+    "pages/indexPage/indexPage",
+    "pages/MyHelp/MyHelp",
+    "pages/MyTask/home/home",
+    "pages/MyTask/Completed/Completed",
+    "pages/MyTask/InProgress/InProgress",
+    "pages/MyTask/AllReceive/AllReceive",
+    "pages/MyTask/Canceled/Canceled",
+    "pages/Chatlist/Chatlist",
+    "pages/HelpDetail/HelpDetail",
+    "pages/SelfHelpDetail/SelfHelpDetail"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

@@ -1,0 +1,32 @@
+<!--miniprogram/pages/indexPage/indexPage.wxml-->
+<!-- 主页的wxml文件-->
+  <cu-custom bgColor="bg-gradual-pink" >  <!--bgcolor - 顶部颜色 -->
+  <view slot="content">首页</view>
+</cu-custom>
+  
+<view class="cu-bar bg-white">
+  <view class="action">
+    <text class="cuIcon-title text-pink"></text> 最新消息
+  </view>
+</view>
+
+
+
+  <swiper class="screen-swiper {{DotStyle?'square-dot':'round-dot'}}" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500">
+  <swiper-item wx:for="{{swiperList}}" wx:key>
+    <image src="{{item.url}}" mode="aspectFill" wx:if="{{item.type=='image'}}"></image>
+    <video src="{{item.url}}" autoplay loop muted show-play-btn="{{false}}" controls="{{false}}" objectFit="cover" wx:if="{{item.type=='video'}}"></video>
+  </swiper-item>
+</swiper>
+
+
+
+  <view class='low bg-white'>
+    <view class="padding flex flex-direction">
+      <button class="flex cu-btn round lg bg-white shadow margin-top" wx:for='{{imgIcons}}' wx:key="index" data-tags='{{item.id}}'  data-id='{{item.id}}' bindtap='gofunction'> 
+      <image class='btning' src='{{item.url}}'></image>
+      <view class="align-center">{{item.title}}</view>
+       </button>
+    </view>
+
+  </view>

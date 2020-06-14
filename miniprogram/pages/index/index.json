@@ -1,3 +1,8 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "indexPage":"../indexPage/indexPage",
+    "HelpPlaza":"../HelpPlaza/HelpPlaza",
+    "Chatlist":"../Chatlist/Chatlist",
+    "Myinfo":"../Myinfo/Myinfo"
+  }
 }

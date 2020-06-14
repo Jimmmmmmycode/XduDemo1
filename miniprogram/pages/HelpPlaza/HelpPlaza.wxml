@@ -1,9 +1,3 @@
-<!--miniprogram/pages/HelpPlaza/HelpPlaza.wxml-->
-
- <cu-custom bgColor="bg-gradual-red" >  <!--bgcolor - 顶部颜色 -->
-  <view slot="content">求助广场</view>
-</cu-custom>
-
 
 <view class="cu-bar bg-white solid-bottom">
   <view class="action">
@@ -12,28 +6,48 @@
 </view>
 
 
-<view wx:for="{{display}}" wx:key="{{index}}" class="cu-card dynamic ">
-  <view class="cu-item padding shadow">
+<view hover-class='wsui-btn__hover_list' bindtap="goforDetail" wx:for="{{display}}"  wx:key="{{index}}" id="{{index}}" class="cu-card dynamic solids-top ">
+  <view class="cu-item shadow">
     <view class="cu-list menu-avatar">
       <view class="cu-item">
-       <view class="cu-avatar squre lg" style="background-image:url({{display[index]['url']}});"></view>
-        <view class="content flex-subb">
-           <view class="text-content">
-           {{display[index]['title']}}
+       <view class="cu-avatar round lg" style="background-image:url({{display[index]['avatarurl']}});"></view>
+        <view class="content flex-sub">
+           <view>
+           {{display[index]['nickname']}}
            </view>
-          <view class="text-red text-sm flex">
+        </view>
+
+           <view class="solid-bottom text-xxl text-right padding">
+              <text class="text-price text-red">{{display[index]['payment']}}</text>
+          </view>
+      </view>
+    </view>
+
+    <view class="text-content">
+        <view class="text-black text-bold">
+           {{display[index]['title']}}
+        </view>
+    </view>
+
+    <view class="grid flex-sub soild-top padding-lr col-1">
+        <image mode='aspectFill'  src="{{display[index]['fileIDs'][0]}}">
+        </image>
+    </view>
+    <view class="test-content solid-bottom padding">
+      <view class="text-orange text-bold  text-right">
             截止时间: {{display[index]['date']}} {{display[index]['time']}} 
       </view>
-        </view>
-      </view>
     </view>
-    <view class="text-content">
-       {{display[index]['detail']}}
+      
+    
+
     </view>
-    <view class="grid flex-sub padding-lr {{isCard?'col-3 grid-square':'col-1'}}">
-    <view class="bg-img {{isCard?'':'only-img'}}" style="background-image:url({{display[index]['imgurl']}});" >
-    </view>
-    </view>
-    </view>
-    </view>
+</view>
+
+
+
+<!--
+   <image class='sizeModal-img' mode='aspectFill'  src="{{display[index]['fileIDs'][0]}}">
+    </image>
+-->
 

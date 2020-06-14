@@ -1,85 +1,29 @@
-//index.js
-const app = getApp()
+
 
 Page({
   data: {
-    cardCur: 0,
-    swiperList: [{
-      id: 0,
-      type: 'image',
-      url: 'https://w.wallhaven.cc/full/6k/wallhaven-6k3oox.jpg'
-    }, {
-      id: 1,
-        type: 'image',
-        url: 'https://w.wallhaven.cc/full/r2/wallhaven-r2ze21.jpg',
-    }, {
-      id: 2,
-      type: 'image',
-      url: 'https://w.wallhaven.cc/full/ox/wallhaven-oxv6gl.png'
-    }, 
-  ],
-
-     // 主页按钮的矢量图标路径及属性，id决定了后面navigate到哪个页面
-     // 绑定到wx:for后面
-    imgIcons:[
-      {
-        id:1,
-        url:'../../images/post.png',
-        title:'发布求助'
-      },
-      
-      {
-        id:2,
-        url:'../../images/plaza.png',
-        title:'求助广场'
-      } , 
-      {
-        id:3,
-        url:'../../images/plaza.png',
-        title:'我的求助'
-      }
-    ]
+    PageCur:'indexPage'
+   
   },
   
-  // cardSwiper
-  cardSwiper(e) {
+
+  // 改变Page-Cur (获取底部tab的data-cur属性)
+  NavChange(e) {
     this.setData({
-      cardCur: e.detail.current
+      PageCur: e.currentTarget.dataset.cur
     })
+    console.log(this.data.PageCur)
   },
-
-  // 点击滑动框中的图片时进入图片详情页
-  goDetail(e) {
-    wx.navigateTo({
-      url: '../pages/detail/detail',
-    })  
-  },
-
-
-  //button的跳转功能集合，由id来进行条件判断决定跳转到哪个页面
-  gofunction(e){
-      var $id=e.currentTarget.dataset.id;
-      console.log($id)
-      // id为1时，跳转到我要发布的页面 IWanToPost
-      if($id==1)wx.navigateTo({
-        url: '../IWanToPost/IWanToPost'
-      })
-      // id为2时，跳转到任务广场页面
-      if($id==2) wx.navigateTo({
-        url:'../HelpPlaza/HelpPlaza',
-      })
-
-
-      // 后面有其他按钮在这里继续添加
-
-
-  },
-
-
-  // 页面初次加载时候执行的操作
 
   onLoad: function() {
-    
+  },
+
+  Post(e){
+
+    wx.navigateTo({
+      url: '../IWanToPost/IWanToPost'
+    })
+
   },
 
 

@@ -1,0 +1,10 @@
+{
+  "component": true,
+  "usingComponents": {
+    "AllPost":"../AllPost/AllPost",
+    "Canceled":"../Canceled/Canceled",
+    "InProgress":"../InProgress/InProgress",
+    "WaitingToReceive":"../WaitingToReceive/WaitingToReceive",
+    "Completed":"../Completed/Completed"
+  }
+}

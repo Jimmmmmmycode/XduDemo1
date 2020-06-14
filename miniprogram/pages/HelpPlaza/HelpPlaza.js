@@ -1,86 +1,53 @@
-// miniprogram/pages/HelpPlaza/HelpPlaza.js
-Page({
-
+// pages/HelpPlaza/plaza.js
+Component({
   /**
-   * 页面的初始数据
+   * 组件的属性列表
    */
-  data: {
-    
-    display:[
-      {
-        title:'求个会做视频的同学（面议)' ,
-        detail:'求个会做视频的同学  做个关于毕业学生怀念深大校园的视频',
-        payment: 1, 
-        date: '2020-06-07',
-        time: '2:17',
-        url:'/../../images/avatar1.jpeg',
-        imgurl:'../../images/content1.jpeg'
-      },
-      {
-        title:'需要找在校同学' ,
-        detail:'有个文件需要去信工楼取一下，再送到学活，急急急。',
-        payment: 10, 
-        date: '2020-06-07',
-        time: '00:00',
-        url:'../../images/avatar2.jpeg',
-        imgurl:'../../images/content2.jpeg'
-      }
-    ]
-  },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
+  properties: {
 
   },
 
   /**
-   * 生命周期函数--监听页面初次渲染完成
+   * 组件的初始数据
    */
-  onReady: function () {
-
+  data:{
+    display:[],
   },
 
   /**
-   * 生命周期函数--监听页面显示
+   * 组件的方法列表
    */
-  onShow: function () {
 
+  attached(){
+    var that = this 
+    const db=wx.cloud.database()
+    db.collection('help_info').limit(10).where({
+      receivestatus:false
+      }).get({
+      success:res=>{
+        console.log('success')
+        console.log(res.data)
+        that.setData({
+          display:res.data
+        })
+        console.log(that.data.display)}
+      ,
+        fail:err=>{
+          console.log(err)
+        }
+    })
   },
+  methods: {
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
+    goforDetail(e){
+      var that = this
+      var index = e.currentTarget.id   // 每个点击事件绑定一个id，这个id值就是这条信息在display数组中的index
+      var detail_info = JSON.stringify(that.data.display[index]) // 将要传递的json对象先转换成字符串（url不能直接传JSON对象)  
+      wx.navigateTo({
+        url: '../HelpDetail/HelpDetail?detail_info='+detail_info,
+      })
+    },
 
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
 
   }
 })

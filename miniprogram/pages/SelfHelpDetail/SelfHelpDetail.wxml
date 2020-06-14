@@ -1,0 +1,123 @@
+<!--miniprogram/pages/SelfHelpDetail/SelfHelpDetail.wxml-->
+
+
+<view class="cu-card dynamic ">
+  <view class="cu-item shadow">
+    <view class="cu-list menu-avatar">
+    <view class="cu-item solids-bottom">
+     <view class="cu-avatar round lg" style="background-image:url({{display['avatarurl']}});"></view>
+        <view class="content flex-sub">
+          <view>
+          {{display['nickname']}}
+          </view>
+        </view>
+        <view class="text-xxl text-right padding">
+              <text class="text-price text-red">{{display['payment']}}</text>
+        </view>
+    </view>
+    </view>
+    <view class="paddinng text-content margin-top">
+        <view class="text-xxl text-black text-bold">
+           {{display['title']}}
+            <text wx:if="{{display['allowEveryone']==true}}" class="cu-tag radius text-right">允许任何人接单</text>
+            <text wx:else class="cu-tag radius text-right">由发布者派单</text>
+        </view>   
+    </view>
+    
+    <view wx:if="{{display['cancelstatus']==false}}" class="cu-bar bg-white solid-bottom">
+        <view class="action">
+         <text class="cuIcon-title text-orange"></text>任务进度
+        </view>
+    </view>
+    
+    <view wx:if="{{ display['cancelstatus']==false&&display['allowEveryone']==true}}" class="bg-white padding">
+        <view class="cu-steps">
+           <view wx:if="{{display['receivestatus']==false}}" class="cu-item {{index>1?'':'text-red'}}" wx:for="{{basicsList}}" wx:key>
+           <text class="cuIcon-{{item.icon}}"></text> {{item.name}}
+           </view>
+
+           <view wx:if="{{display['receivestatus']==true&&display['finishstatus']==false}}" class="cu-item {{index>2?'':'text-red'}}" wx:for="{{basicsList}}" wx:key >
+           <text class="cuIcon-{{item.icon}}"></text> {{item.name}}
+           </view>
+
+            <view wx:if="{{display['finishstatus']==true}}" class="cu-item {{index>3?'':'text-red'}}" wx:for="{{basicsList}}" wx:key >
+           <text class="cuIcon-{{item.icon}}"></text> {{item.name}}
+           </view>
+        </view>
+    </view>
+
+     <view wx:if="{{ display['cancelstatus']==false&&display['allowEveryone']==false}}" class="bg-white padding">
+        <view class="cu-steps">
+           <view wx:if="{{display['receivestatus']==false}}" class="cu-item {{index>1?'':'text-red'}}" wx:for="{{basicsList2}}" wx:key>
+           <text class="cuIcon-{{item.icon}}"></text> {{item.name}}
+           </view>
+
+           <view wx:if="{{display['receivestatus']==true&&display['finishstatus']==false}}" class="cu-item {{index>2?'':'text-red'}}" wx:for="{{basicsList2}}" wx:key >
+           <text class="cuIcon-{{item.icon}}"></text> {{item.name}}
+           </view>
+
+            <view wx:if="{{display['finishstatus']==true}}" class="cu-item {{index>3?'':'text-red'}}" wx:for="{{basicsList2}}" wx:key >
+           <text class="cuIcon-{{item.icon}}"></text> {{item.name}}
+           </view>
+        </view>
+    </view>
+
+
+    <view class="text-content">
+      <view class="text-yellow">截止日期:{{display['date']}} {{display['time']}}</view>
+    </view>
+    <view class="text-content">
+      <view class="text-pink" >性别要求:{{display['require_sex']}}</view>
+    </view>
+     <view class="text-content">
+        具体内容:{{display['detail']}}
+    </view>
+
+
+    <view class="grid flex-sub soilds-top padding-lr col-3 grid-squre" wx:for="{{display['fileIDs']}}"  wx:key="{{index}}" >
+        <image mode='aspectFill'  bindtap="ViewImage" data-url="{{display['fileIDs'][index]}}"
+        src="{{display['fileIDs'][index]}}" >
+        </image>
+    </view>
+
+
+
+    <view wx:if="{{ display['allowEveryone']==true }}" class="cu-bar bg-white solid-bottom">
+        <view class="action">
+         <text class="cuIcon-title text-orange"></text>接单人:
+        </view>
+        <view class="action">
+            <button class="cu-btn bg-green shadow" bindtap="basicsSteps">聊天</button>
+        </view>
+    </view>
+
+    <view class="cu-card dynamic ">
+    <view class="cu-item shadow">
+    <view wx:if="{{display['allowEveryone']==true}}" class="cu-list menu-avatar">
+    <view class="cu-item ">
+     <view class="cu-avatar round lg" style="background-image:url({{display['avatarurl']}});"></view>
+        <view class="content flex-sub">
+          <view>
+          {{display['nickname']}}
+          </view>
+        </view>
+     </view>
+      </view>
+        </view>
+      </view>
+
+    <view class="cu-bar btn-group padding-xl margin-top">
+    <button class="cu-btn block  line-black margin-tb-sm round lg" bindtap="onPost">
+    <text class="cuIcon-flashbuyfill"></text>
+    取消订单
+    </button>
+  </view>
+
+
+ </view>
+
+
+
+
+
+</view>

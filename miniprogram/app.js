@@ -35,7 +35,7 @@ App({
              success: res => {
                // 可以将 res 发送给后台解码出 unionId
                this.globalData.userInfo = res.userInfo
- 
+               console.log(this.globalData.userInfo)
                // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
                // 所以此处加入 callback 以防止这种情况
                if (this.userInfoReadyCallback) {
@@ -46,21 +46,23 @@ App({
          }
        }
      })
-     // 获取系统状态栏信息
-     wx.getSystemInfo({
-       success: e => {
-         this.globalData.StatusBar = e.statusBarHeight;
-         let capsule = wx.getMenuButtonBoundingClientRect();
-         if (capsule) {
-            this.globalData.Custom = capsule;
-           this.globalData.CustomBar = capsule.bottom + capsule.top - e.statusBarHeight;
-         } else {
-           this.globalData.CustomBar = e.statusBarHeight + 50;
-         }
-       }
-     })
-   },
+     
+     wx.cloud.callFunction({
+      name: 'login',
+      data: {},
+      success: res => {
+        console.log('[云函数] [login] user openid: ', res.result.openid)
+
+        this.globalData.openid = res.result.openid
+      },
+      fail: err => {
+        console.error('[云函数] [login] 调用失败', err)
+      }
+    })
+   }
+   ,
   globalData: {
-    userInfo: null
+    userInfo: null,
+    openid:''
   }
 })
