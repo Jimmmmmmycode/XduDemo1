@@ -1,9 +1,30 @@
 
 <view class="cu-bar bg-white solid-bottom">
+
   <view class="action">
     <text class="cuIcon-title text-blue"></text>最新订单
   </view>
+
+  <view class="action">
+    <view class="cu-btn bg-blue shadow margin-left" bindtap="showModal" data-target="DrawerModalR">筛选</view>
+  </view>
+
 </view>
+
+
+<view class="cu-modal drawer-modal justify-end {{modalName=='DrawerModalR'?'show':''}}" bindtap="hideModal">
+  <view class="cu-dialog basis-lg" catchtap style="top:{{CustomBar}}px;height:calc(100vh - {{CustomBar}}px)">
+    <view class="cu-list menu text-left">
+      <view  wx:for="{{px}}" class="cu-item arrow" wx:key="{{index}}">
+        <view class="content">
+          <view class="content" bindtap="picklabel" id="{{index}}">{{px[index]['name']}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+
 
 
 <view hover-class='wsui-btn__hover_list' bindtap="goforDetail" wx:for="{{display}}"  wx:key="{{index}}" id="{{index}}" class="cu-card dynamic solids-top ">
@@ -38,8 +59,6 @@
             截止时间: {{display[index]['date']}} {{display[index]['time']}} 
       </view>
     </view>
-      
-    
 
     </view>
 </view>

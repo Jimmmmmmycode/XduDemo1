@@ -44,19 +44,10 @@
 
   <view class="cu-bar btn-group padding-xl margin-top">
 
-    <button wx:if="{{display['allowEveryone']==false}}" class="cu-btn block line-blue  margin-tb-sm round lg" bindtap="goforchat" >
+    <navigator class="cu-btn block line-green margin-tb-sm round lg" 
+    url="../?orderstatus={{display['_id']}}?posterid={{display['_openid']}}" >
     <text class="cuIcon-messagefill"></text>
-    我要聊聊</button>
-
-   
-    <button wx:else class="cu-btn block line-green margin-tb-sm round lg" bindtap="onPost">
-    <text class="cuIcon-flashbuyfill"></text>
-    我要接单
-    </button>
-
-
-
-
+    我要聊聊</navigator>
   </view>
 
 

@@ -12,6 +12,30 @@ Component({
    */
   data:{
     display:[],
+
+    px:[{
+      value:1,
+      name:'最新发布',
+      click:false,
+    },
+    {
+      value:2,
+      name:'价格由高到低',
+      click:false,
+    },{
+      value:3,
+      name:'价格由低到高',
+      click:false,
+    },{
+      value:4,
+      name:'截止时间由早到晚',
+      click:false,
+    },{
+      value:5,
+      name:'截止时间由晚到早',
+      click:false,
+    }
+  ]
   },
 
   /**
@@ -47,6 +71,25 @@ Component({
         url: '../HelpDetail/HelpDetail?detail_info='+detail_info,
       })
     },
+
+
+
+
+  showModal(e) {
+      this.setData({
+        modalName: e.currentTarget.dataset.target
+      })
+    },
+    
+    hideModal(e) {
+      this.setData({
+        modalName: null
+      })
+    },
+
+
+
+
 
 
   }

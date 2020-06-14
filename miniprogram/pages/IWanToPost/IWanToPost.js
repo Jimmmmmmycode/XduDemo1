@@ -161,7 +161,7 @@ Page({
 
   /*  绑定保存按钮的bindtap属性,点击后将用户本次的填写保存到本地缓存  */
   onSave:function() {
-    
+
   },
 
 
@@ -170,12 +170,13 @@ Page({
   
   /* 绑定提交按钮的bindtap属性，点击后向云数据库和云存储上传所有必要的数据 */
   onPost: function() {
-    if( this.data.detail==null||this.data.payment==null||this.data.title==null){
-      wx.showToast({
-        title: '请完善所有信息',
+    if( this.data.detail==null||this.data.payment==null||this.data.title==null ) {
+      wx.showModal({
+        title:'请完善信息' 
       })
       return;
     }
+
     wx.showLoading({
       title: '提交中',
     })
