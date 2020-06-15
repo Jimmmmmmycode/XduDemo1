@@ -13,7 +13,7 @@ Page({
     time: '00:00',  // 截止时间
     sexpicker: ['男', '女', '男女皆可'],
     index:2, // sexpicker的索引
-    require_sex:this.data.sexpicker[index],
+    require_sex:'',
     imgList: [],  // 图片
     title:null,   //标题
     detail:null,  //细节
@@ -165,16 +165,22 @@ Page({
       return;
     }
 
+    
+    var that = this 
     var TIME = util.formatTime(new Date());
-    this.setData({
+    that.setData({
       postTime: TIME,
     });
     console.log(TIME)
+    that.setdata({
+      require_sex:this.data.sexpicker[this.data.index]
+    })
 
     wx.showLoading({
       title: '提交中',
     })
-    var that = this 
+
+    
     const promiseArr = [] 
     for(let i=0;i<that.data.imgList.length;i++){
         let filePath = that.data.imgList[i]

@@ -1,8 +1,0 @@
-/* miniprogram/pages/indexPage/indexPage.wxss */
-@import "../../colorui/main.wxss";
-@import "../../colorui/icon.wxss";
-
-.low .btning{
-  width:46rpx;
-  height:46rpx;
-}

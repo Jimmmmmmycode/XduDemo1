@@ -4,8 +4,6 @@
     "pages/IWanToPost/IWanToPost",
     "pages/HelpPlaza/HelpPlaza",
     "pages/Myinfo/Myinfo",
-    "pages/indexPage/indexPage",
-    "pages/MyHelp/MyHelp",
     "pages/MyTask/home/home",
     "pages/MyTask/Completed/Completed",
     "pages/MyTask/InProgress/InProgress",

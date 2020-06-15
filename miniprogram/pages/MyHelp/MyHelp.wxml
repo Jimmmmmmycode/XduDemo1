@@ -1,5 +1,4 @@
-<!--miniprogram/pages/MyHelp/MyHelp.wxml-->
-
+<!--pages/MyHelp2/MyHelp.wxml-->
 
 
 <!--顶部tab-->
@@ -14,4 +13,3 @@
 <!--根据PageCurrent显示页面-->
 <MyPost wx:if="{{PageCur=='MyPost'}}"></MyPost>
 <MyTask wx:if="{{PageCur=='MyTask'}}"></MyTask>
-

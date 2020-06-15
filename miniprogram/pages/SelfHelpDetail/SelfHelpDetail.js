@@ -58,7 +58,7 @@ Page({
     )
     console.log(this.data.display)
     console.log("页面信息传递成功")
-    
+
 
   },
   /**
@@ -70,6 +70,18 @@ Page({
       basics: this.data.basics == this.data.basicsList.length - 1 ? 0 : this.data.basics + 1
     })
   },
+
+   // 跳转到聊天页面(彤哥写)
+   // 发布者openid - display._openid 
+   // 发布者姓名 - display.nickname
+   // 发布者头像 - display.avatarUrl
+   // 权限 -用于决定哪个按钮显示 -display.allowEveryone
+   navigateToChat:function(e){
+    wx.navigateTo({
+      url: '',
+    })
+  },
+
   onReady: function () {
 
   },
