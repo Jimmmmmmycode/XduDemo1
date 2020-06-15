@@ -13,7 +13,7 @@ Component({
   data:{
     display:[],
 
-    px:[{
+    menulist:[{
       value:1,
       name:'最新发布',
       click:false,
@@ -88,6 +88,110 @@ Component({
     },
 
 
+
+    picklabel(e) {
+      var that = this 
+      const db=wx.cloud.database()
+      var labelid=e.currentTarget.id
+      console.log(labelid)
+      if(labelid==0){
+        db.collection('help_info').limit(10).where({
+          receivestatus:false
+          }).get({
+          success:res=>{
+            console.log('success')
+            console.log(res.data)
+            that.setData({
+              display:res.data,
+              modalName:null
+            })
+            console.log(that.data.display)}
+           
+
+          ,
+            fail:err=>{
+              console.log(err)
+            }
+        })
+      }
+      else if(labelid==1){
+        db.collection('help_info').orderBy('payment', 'desc')
+          .get({
+            success:res=>{
+              console.log('success')
+              console.log(res.data)
+              that.setData({
+                display:res.data,
+                modalName:null
+              })
+              console.log(that.data.display)}
+            ,
+              fail:err=>{
+                console.log(err)
+              }
+          })
+          .then(console.log)
+          .catch(console.error)
+      }
+      else if(labelid==2){
+        db.collection('help_info').orderBy('payment', 'asc')
+          .get({
+            success:res=>{
+              console.log('success')
+              console.log(res.data)
+              that.setData({
+                display:res.data,
+                modalName:null
+              })
+              console.log(that.data.display)}
+            ,
+              fail:err=>{
+                console.log(err)
+              }
+          })
+          .then(console.log)
+          .catch(console.error)
+      }
+      else if(labelid==3){
+        db.collection('help_info').orderBy('date', 'desc').orderBy('time','desc')
+          .get({
+            success:res=>{
+              console.log('success')
+              console.log(res.data)
+              that.setData({
+                display:res.data,
+                modalName:null
+              })
+              console.log(that.data.display)}
+            ,
+              fail:err=>{
+                console.log(err)
+              }
+          })
+          .then(console.log)
+          .catch(console.error)
+      }
+      else if(labelid==4){
+        db.collection('help_info').orderBy('date', 'asc').orderBy('time','asc')
+          .get({
+            success:res=>{
+              console.log('success')
+              console.log(res.data)
+              that.setData({
+                display:res.data ,
+                modalName:null
+              })
+              console.log(that.data.display)}
+            ,
+              fail:err=>{
+                console.log(err)
+              }
+          })
+          .then(console.log)
+          .catch(console.error)
+      }
+      this.hideModal(e)
+    }
 
 
 

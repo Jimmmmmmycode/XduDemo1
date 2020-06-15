@@ -13,7 +13,8 @@
     "pages/MyTask/Canceled/Canceled",
     "pages/Chatlist/Chatlist",
     "pages/HelpDetail/HelpDetail",
-    "pages/SelfHelpDetail/SelfHelpDetail"
+    "pages/SelfHelpDetail/SelfHelpDetail",
+    "pages/SelfReceiveDetail/SelfReceiveDetail"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

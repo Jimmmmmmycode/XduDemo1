@@ -24,7 +24,7 @@
         </view>
     </view>
 
-    <view class="grid flex-sub soild-top padding-lr col-1">
+    <view wx:if="{{display[index]['fileIDs'].length!=0}}" class="grid flex-sub soild-top padding-lr col-1">
         <image mode='aspectFill'  src="{{display[index]['fileIDs'][0]}}">
         </image>
     </view>
