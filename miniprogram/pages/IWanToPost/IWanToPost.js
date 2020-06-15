@@ -172,7 +172,7 @@ Page({
       postTime: TIME,
     });
     console.log(TIME)
-    that.setdata({
+    that.setData({
       require_sex:this.data.sexpicker[this.data.index]
     })
 
