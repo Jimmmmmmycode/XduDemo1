@@ -86,14 +86,11 @@
         <view class="action">
          <text class="cuIcon-title text-orange"></text>接单人:
         </view>
-        <view class="action">
-            <button class="cu-btn bg-green shadow" bindtap="basicsSteps">聊天</button>
-        </view>
     </view>
 
     <view class="cu-card dynamic ">
     <view class="cu-item shadow">
-    <view wx:if="{{display['allowEveryone']==true}}" class="cu-list menu-avatar">
+    <view  class="cu-list menu-avatar">
     <view wx:if="{{display['receivestatus']==true}}" class="cu-item ">
      <view class="cu-avatar round lg" style="background-image:url({{display['avatarurl']}});"></view>
         <view class="content flex-sub">
@@ -104,17 +101,12 @@
      </view>
       </view>
         </view>
-      </view>
-
-    <view wx:if="{{display['finishstatus']==false&&display['receivestatus']==true}}" class="cu-bar btn-group padding-xl margin-top">
-    <button class="cu-btn block  line-black margin-tb-sm round lg" bindtap="onPost">
+    </view>
+    
+    <view wx:if="{{display['receivestatus']==true}}" class="cu-bar btn-group padding-xl margin-top">
+    <button class="cu-btn block line-green margin-tb-sm round lg" bindtap="navigateToChat">
     <text class="cuIcon-flashbuyfill"></text>
-    取消订单
-    </button>
-
-     <button class="cu-btn block  line-red margin-tb-sm round lg" bindtap="onPost">
-    <text class="cuIcon-flashbuyfill"></text>
-    完成订单
+    聊一聊
     </button>
   </view>
 

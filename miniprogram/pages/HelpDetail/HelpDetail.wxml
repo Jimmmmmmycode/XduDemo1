@@ -44,10 +44,12 @@
 
   <view class="cu-bar btn-group padding-xl margin-top">
 
-    <navigator class="cu-btn block line-green margin-tb-sm round lg" 
-    url="../?orderstatus={{display['_id']}}?posterid={{display['_openid']}}" >
-    <text class="cuIcon-messagefill"></text>
-    我要聊聊</navigator>
+
+  <button class="cu-btn block  line-green margin-tb-sm round lg" bindtap="navigateToChat">
+      <text class="cuIcon-flashbuyfill"></text>
+          聊一聊
+  </button>
+
   </view>
 
 

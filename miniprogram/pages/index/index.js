@@ -2,7 +2,7 @@
 
 Page({
   data: {
-    PageCur:'indexPage'
+    PageCur:'HelpPlaza'
    
   },
   

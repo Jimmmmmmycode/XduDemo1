@@ -1,6 +1,8 @@
 // miniprogram/pages/IWanToPost/IWanToPost.js
 const app = getApp()
 const db = wx.cloud.database() // 获取数据库引用
+var util = require('../../utils/util.js')
+
 Page({
 
   /**
@@ -11,7 +13,7 @@ Page({
     time: '00:00',  // 截止时间
     sexpicker: ['男', '女', '男女皆可'],
     index:2, // sexpicker的索引
-    require_sex:null,
+    require_sex:this.data.sexpicker[index],
     imgList: [],  // 图片
     title:null,   //标题
     detail:null,  //细节
@@ -19,7 +21,8 @@ Page({
     postselfinfo:false,  // 是否上传个人信息
     allowEveryone:false,
     helpid: '',
-    fileIDs : [] 
+    fileIDs : [] ,
+    postTime:''  // 发布时间
   },
 
 
@@ -127,21 +130,6 @@ Page({
     })
   },
 
-  //  用户是否愿意上传个人信息
-  changeprivacy(e){
-
-    if(this.data.postselfinfo){
-    this.setData({
-      postselfinfo:false
-    })
-  }else{
-    this.setData({
-      postselfinfo:true
-    })
-   }
-
-  },
-
   // 
   changeReceiveprivacy(e){
 
@@ -177,6 +165,12 @@ Page({
       return;
     }
 
+    var TIME = util.formatTime(new Date());
+    this.setData({
+      postTime: TIME,
+    });
+    console.log(TIME)
+
     wx.showLoading({
       title: '提交中',
     })
@@ -206,6 +200,7 @@ Page({
     Promise.all(promiseArr).then(res=>{
     db.collection('help_info').add({
       data:{
+        postTime:that.data.postTime, // 发布时间
         title:that.data.title, 
         detail:that.data.detail,
         payment:that.data.payment,
@@ -218,7 +213,8 @@ Page({
         allowEveryone:that.data.allowEveryone , //是否同意所有人接单
         avatarurl: app.globalData.userInfo.avatarUrl, // 用户头像
         nickname:app.globalData.userInfo.nickName,// 用户名
-        fileIDs:that.data.fileIDs  // 用户上传的图片
+        fileIDs:that.data.fileIDs, // 用户上传的图片
+        receiverid:''
       }    
       ,
       success:res=>{
@@ -234,11 +230,13 @@ Page({
       title: '新增记录成功',
     })
     console.log(res)
+    wx.navigateBack()
   })
     .catch(error=>{
       console.log(error)
     })
     
+
   
      
  },

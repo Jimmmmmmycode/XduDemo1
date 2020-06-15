@@ -6,32 +6,32 @@ Page({
    */
   data: {
     display:'',
-
+    receiverinfo:'',
     basicsList: [{
-      icon: 'usefullfill',
+      icon: 'edit',
       name: '已发布'
     }, {
-      icon: 'radioboxfill',
+      icon: 'loading',
       name: '待接单'
     }, {
-      icon: 'roundclosefill',
+      icon: 'creative',
       name: '进行中'
     }, {
-      icon: 'roundcheckfill',
+      icon: 'check',
       name: '已完成'
     }, ],
     
     basicsList2: [ {
-      icon: 'usefullfill',
+      icon: 'edit',
       name: '已发布'
     }, {
-      icon: 'radioboxfill',
+      icon: 'loading',
       name: '待派单'
     }, {
-      icon: 'roundclosefill',
+      icon: 'creative',
       name: '进行中'
     }, {
-      icon: 'roundcheckfill',
+      icon: 'check',
       name: '已完成'
     }, ],
   },
@@ -58,6 +58,7 @@ Page({
     )
     console.log(this.data.display)
     console.log("页面信息传递成功")
+    
 
   },
   /**

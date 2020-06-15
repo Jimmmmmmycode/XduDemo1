@@ -1,0 +1,15 @@
+<!--pages/MyHelp2/MyHelp.wxml-->
+
+
+<!--顶部tab-->
+<scroll-view scroll-x class="bg-white nav">
+  <view class="flex text-center">
+    <view class="cu-item flex-sub {{index==TabCur?'text-orange cur':''}}" wx:for="{{tab1}}" wx:key bindtap="tabSelect" data-cur="MyPost" data-id="{{index}}">
+      {{tab1[index]}}
+    </view>
+  </view>
+</scroll-view>
+
+<!--根据PageCurrent显示页面-->
+<MyPost wx:if="{{PageCur=='MyPost'}}"></MyPost>
+<MyTask wx:if="{{PageCur=='MyTask'}}"></MyTask>

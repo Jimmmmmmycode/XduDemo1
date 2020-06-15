@@ -3,6 +3,7 @@
     "indexPage":"../indexPage/indexPage",
     "HelpPlaza":"../HelpPlaza/HelpPlaza",
     "Chatlist":"../Chatlist/Chatlist",
-    "Myinfo":"../Myinfo/Myinfo"
+    "Myinfo":"../Myinfo/Myinfo",
+    "MyHelp":"../MyHelp2/MyHelp"
   }
 }

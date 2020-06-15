@@ -30,16 +30,11 @@
     <view class="cu-item arrow">
       <navigator class="content" url="" hover-class="none">
         <text class="cuIcon-peoplefill text-green"></text>
-        <text class="text-grey">个人资料</text>
+        <text class="text-grey">个人认证</text>
       </navigator>
     </view>
    
-    <view class="cu-item arrow">
-      <navigator class="content" url="../MyHelp/MyHelp" hover-class="none">
-        <text class="cuIcon-creativefill text-orange"></text>
-        <text class="text-grey">我的求助</text>
-      </navigator>
-    </view>
+    
   </view>
   <view class="cu-tabbar-height"></view>
 </scroll-view>

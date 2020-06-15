@@ -1,19 +1,20 @@
 <!-- 主页的wxml文件-->
-  
 
 
-<indexPage wx:if="{{PageCur=='indexPage'}}"></indexPage> 
 <HelpPlaza wx:if="{{PageCur=='HelpPlaza'}}"></HelpPlaza>
+<MyHelp wx:if="{{PageCur=='MyHelp'}}"></MyHelp> 
 <Chatlist wx:if="{{PageCur=='Chatlist'}}"></Chatlist>
 <Myinfo wx:if="{{PageCur=='Myinfo'}}"></Myinfo>
 
 
 <view class="cu-bar tabbar bg-white shadow foot">
-   <view class="action" bindtap="NavChange" data-cur="indexPage">
-      <view class="cuIcon-homefill {{PageCur=='indexPage'?'text-red':'text-gray'}}"></view>首页
-    </view>
-    <view class="action" bindtap="NavChange" data-cur="HelpPlaza">
+   <view class="action" bindtap="NavChange" data-cur="HelpPlaza">
       <view class="cuIcon-discoverfill {{PageCur=='HelpPlaza'?'text-red':'text-gray'}}"></view>求助广场
+    </view>
+
+    
+   <view class="action" bindtap="NavChange" data-cur="MyHelp">
+      <view class="cuIcon-homefill {{PageCur=='MyHelp'?'text-red':'text-gray'}}"></view>我的求助
     </view>
 
      <view class="action text-gray add-action">

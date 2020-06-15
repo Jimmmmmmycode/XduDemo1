@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "MyPost": "../MyPost/home/home",
+    "MyTask": "../MyTask/home/home"
+  }
+}

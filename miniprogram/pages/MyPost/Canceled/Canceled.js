@@ -23,7 +23,7 @@ Component({
     var that = this 
     that.setData(
       {
-        user_open_id:getApp().globalData.open_id
+        user_open_id:getApp().globalData.openid
       }
     )
     console.log('对全局变量获得open_id成功',this.data.user_open_id)

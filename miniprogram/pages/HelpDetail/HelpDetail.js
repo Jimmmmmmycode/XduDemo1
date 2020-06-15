@@ -32,18 +32,15 @@ Page({
   },
 
 
+  // 跳转到聊天页面(彤哥写)
+  navigateToChat:function(e){
+    wx.navigateTo({
+      url: '',
+    })
+  },
+
+
   
-
-
-
-
-
-
-
-
-
-
-
 
   /**
    * 生命周期函数--监听页面初次渲染完成
