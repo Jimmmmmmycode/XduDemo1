@@ -31,9 +31,9 @@ Component({
     console.log('对全局变量获得open_id成功',this.data.user_open_id)
     console.log('开始从数据库获取数据,一次限制获取10条')
     const db=wx.cloud.database()
-    db.collection('help_info').limit(10).where({
+    db.collection('help_info').limit(20).where({
       _openid:this.data.user_open_id
-      }).get({
+      }).orderBy('postTime','desc').get({
       success:res=>{
         console.log('success')
         console.log(res.data)

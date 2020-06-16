@@ -1,4 +1,3 @@
-/* pages/Chatlist/Chatlist.wxss */
-
-@import "../../colorui/icon.wxss";
-@import "../../colorui/main.wxss";
+/* pages/index/chatlist/chatlist.wxss */
+@import"../../colorui/main.wxss";
+@import"../../colorui/icon.wxss"

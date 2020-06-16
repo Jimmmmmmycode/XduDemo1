@@ -92,10 +92,10 @@
     <view class="cu-item shadow">
     <view  class="cu-list menu-avatar">
     <view wx:if="{{display['receivestatus']==true}}" class="cu-item ">
-     <view class="cu-avatar round lg" style="background-image:url({{display['avatarurl']}});"></view>
+     <view class="cu-avatar round lg" style="background-image:url({{display['receiveravatarurl']}});"></view>
         <view class="content flex-sub">
           <view>
-          {{display['nickname']}}
+          {{display['receivernickname']}}
           </view>
         </view>
      </view>
@@ -103,11 +103,27 @@
         </view>
     </view>
     
-    <view wx:if="{{display['receivestatus']==true}}" class="cu-bar btn-group padding-xl margin-top">
-    <button class="cu-btn block line-green margin-tb-sm round lg" bindtap="navigateToChat">
-    <text class="cuIcon-flashbuyfill"></text>
-    聊一聊
+    <view class="cu-bar btn-group padding-xl margin-top">
+
+
+    <button  wx:if="{{display['cancelstatus']==false&&display['receivestatus']==false}}"  class="cu-btn block line-black margin-tb-sm round lg" bindtap="cancel">
+    <text class="cuIcon-flashbuyfill"></text>取消发布
     </button>
+
+    <button  wx:if="{{display['receivestatus']==true}}"  class="cu-btn block line-green margin-tb-sm round lg" bindtap="navigateToChat">
+    <text class="cuIcon-flashbuyfill"></text>去聊聊
+    </button>
+    
+
+
+    <button  wx:if="{{display['cancelstatus']==true}}"  class="cu-btn block line-orange margin-tb-sm round lg" bindtap="repost">
+    <text class="cuIcon-flashbuyfill"></text>重新发布
+    </button>
+
+  
+
+
+    
   </view>
 
   

@@ -1,0 +1,41 @@
+<view class="bg-cyan padding radius light">
+  <view class="solids-bottom padding-xs flex align-center">
+    <view class="flex-sub text-center">
+      <view class="solid-bottom text-xl padding">
+        <text class="text-black text-bold">学生认证</text>
+      </view>
+    </view>
+  </view>
+
+
+  <form bindsubmit="formSubmit">
+    <view class = "solids-bottom padding-xs flex align-center">
+      <view class="flex-sub text-center">姓名</view>
+      <input name="name" placeholder="姓名"></input>
+    </view>
+    <view class = "solids-bottom padding-xs flex align-center">
+      <view class="flex-sub text-center">学号</view>
+      <input name="code" placeholder="学号"></input>
+    </view>
+    <view class="img" wx:for="{{files}}" wx:for-item="item" wx:key="*this">
+      <image bindtap="chooseImage" name="image" src="{{item}}"></image>
+    </view>
+    <view class="btn-area">
+      <button formType="submit">Submit</button>
+      <button formType="reset">Reset</button>
+    </view>
+  </form>
+  <view class="cu-modal {{modalName=='Modal'?'show':''}}">
+    <view class="cu-dialog">
+      <view class="cu-bar bg-white justify-end">
+        <view class="content">{{title}}</view>
+        <view class="action" bindtap="hideModal">
+          <text class="cuIcon-close text-red"></text>
+        </view>
+      </view>
+      <view class="padding-xl">
+        {{errtext}}
+      </view>
+    </view>
+  </view>
+</view>

@@ -37,7 +37,7 @@ Component({
         cancelstatus:false
       }).where({
         receivestatus:false
-      }).get({
+      }).orderBy('postTime','desc').get({
       success:res=>{
         console.log('success')
         console.log(res.data)

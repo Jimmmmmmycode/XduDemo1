@@ -19,6 +19,15 @@
         <view class="text-black text-bold">
            {{display[index]['title']}}
         </view>
+        <view wx:if="{{display[index].receivestatus==true&&display[index].finishstatus==false&&display[index].cancelstatus==false}}" class="text-grey text-bold">
+           订单状态:进行中
+        </view>
+        <view wx:if="{{display[index].receivestatus==true&&display[index].finishstatus==true&&display[index].cancelstatus==false}}" class="text-grey text-bold">
+           订单状态:已完成
+        </view>
+        <view wx:if="{{display[index].cancelstatus==true}}" class="text-grey text-bold">
+           订单状态:已取消
+        </view>
     </view>
 
     <view wx:if="{{display[index]['fileIDs'].length!=0}}" class="grid flex-sub soild-top padding-lr col-1">

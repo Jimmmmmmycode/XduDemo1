@@ -1,0 +1,38 @@
+<view class="cu-list menu-avatar">
+  <view class="cu-item" wx:for="{{verifylist}}">
+    <view class="cu-avatar round lg" style="background-image:url({{item['avatarUrl']}});"></view>
+    <view class="cu-bar bg-white margin-top">
+      <view class="action">
+        <button class="cu-btn bg-green shadow" bindtap="showModal" data-target="Image" data-index="{{index}}">Image</button>
+      </view>
+    </view>
+    <view class="content">
+      <view class="text-grey">{{item['nickName']}}</view>
+      <view class="text-gray text-sm flex">
+        {{item['name']}}
+      </view>
+      <view class="text-gray text-sm flex">
+        {{item['code']}}
+      </view>
+    </view>
+    <view class="action">
+      <view class="text-grey text-xs">22:20</view>
+    </view>
+  </view>
+</view>
+<view class="cu-modal {{modalName=='Image'?'show':''}}">
+  <view class="cu-dialog">
+    <view class="bg-img" style="background-image: url('{{showUrl}}');height:200px;">
+      <view class="cu-bar justify-end text-white">
+        <view class="action" bindtap="hideModal">
+          <text class="cuIcon-close "></text>
+        </view>
+      </view>
+    </view>
+    <view class="cu-bar bg-white">
+      <view class="action margin-0 flex-sub  solid-left text-green" bindtap="pass">验证通过</view>
+      <view class="action margin-0 flex-sub  solid-left" bindtap="hideModal">验证失败</view>
+      <view class="action margin-0 flex-sub  solid-right" bindtap="hideModal">取消</view>
+    </view>
+  </view>
+</view>

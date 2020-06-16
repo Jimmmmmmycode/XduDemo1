@@ -12,18 +12,16 @@
 </view>
 
 
-<view class="cu-modal drawer-modal justify-start {{modalName=='DrawerModalR'?'show':''}}" bindtap="hideModal">
+<view class="cu-modal drawer-modal justify-end {{modalName=='DrawerModalR'?'show':''}}" bindtap="hideModal">
   <view class="cu-dialog basis-lg" catchtap style="top:{{CustomBar}}px;height:calc(100vh - {{CustomBar}}px)">
-
     <view class="cu-list menu text-left">
       <view  wx:for="{{menulist}}" class="cu-item " wx:key="{{index}}">
         <view class="content">
           <view class="content"  hover-class='wsui-btn__hover_list' bindtap="picklabel" id="{{index}}">{{menulist[index]['name']}}
-          </view>
+        </view>
         </view>
       </view>
     </view>
-
   </view>
 </view>
 
@@ -50,8 +48,8 @@
         </view>
     </view>
 
-    <view wx:if="{{display[index]['fileIDs'].length!=0}}" class="grid flex-sub soild-top padding-lr col-1">
-        <image mode='aspectFill'  src="{{display[index]['fileIDs'][0]}}">
+    <view wx:if="{{display[index]['fileIDs'][0]}}" class="grid flex-sub soild-top padding-lr col-1">
+        <image mode='aspectFill' src="{{display[index]['fileIDs'][0]}}">
         </image>
     </view>
   

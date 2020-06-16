@@ -27,7 +27,7 @@
         </view>
     </view>
     
-    <view wx:if="{{ display['cancelstatus']==false&&display['allowEveryone']==true}}" class="bg-white padding">
+    <view wx:if="{{display['cancelstatus']==false}}" class="bg-white padding">
         <view class="cu-steps">
            <view wx:if="{{display['receivestatus']==false}}" class="cu-item {{index>1?'':'text-red'}}" wx:for="{{basicsList}}" wx:key>
            <text class="cuIcon-{{item.icon}}"></text> {{item.name}}
@@ -43,21 +43,7 @@
         </view>
     </view>
 
-     <view wx:if="{{ display['cancelstatus']==false&&display['allowEveryone']==false}}" class="bg-white padding">
-        <view class="cu-steps">
-           <view wx:if="{{display['receivestatus']==false}}" class="cu-item {{index>1?'':'text-red'}}" wx:for="{{basicsList2}}" wx:key>
-           <text class="cuIcon-{{item.icon}}"></text> {{item.name}}
-           </view>
-
-           <view wx:if="{{display['receivestatus']==true&&display['finishstatus']==false}}" class="cu-item {{index>2?'':'text-red'}}" wx:for="{{basicsList2}}" wx:key >
-           <text class="cuIcon-{{item.icon}}"></text> {{item.name}}
-           </view>
-
-            <view wx:if="{{display['finishstatus']==true}}" class="cu-item {{index>3?'':'text-red'}}" wx:for="{{basicsList2}}" wx:key >
-           <text class="cuIcon-{{item.icon}}"></text> {{item.name}}
-           </view>
-        </view>
-    </view>
+    
 
 
     <view class="text-content">

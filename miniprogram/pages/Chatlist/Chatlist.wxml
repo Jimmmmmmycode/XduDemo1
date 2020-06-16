@@ -1,2 +1,24 @@
-<!--pages/Chatlist/Chatlist.wxml-->
-<text>pages/Chatlist/Chatlist.wxml</text>
+<!--pages/index/chatlist/chatlist.wxml-->
+<view class="cu-bar bg-white solid-bottom margin-top">
+    <view class="action">
+      <text class="cuIcon-title text-orange "></text> 
+    </view>
+  </view>
+  
+  <view class="cu-list menu-avatar" >
+    <view class="cu-item {{modalName=='move-box-'+ index?'move-cur':''}}" wx:for="{{messagelist}}"  bindtouchstart="ListTouchStart" bindtouchmove="ListTouchMove" bindtouchend="ListTouchEnd" data-target="move-box-{{index}}">
+      <view class="cu-avatar round lg" style="background-image:url({{item.avatarUrl}});"></view>
+      <view class="content" bindtap="navigateToRoom" data-posterId="{{item.posterId}}" data-receiverId="{{item._id.receiverId}}" data-orderId="{{item._id.orderId}}">
+        <view class="text-grey">{{item.nickName}}</view>
+        <view class="text-gray text-sm">
+          {{item.lastmassage}}</view>
+      </view>
+      <view class="action">
+        <view class="text-grey text-xs">{{item.sendTime}}</view>
+      </view>
+      <view class="move">
+        <view class="bg-grey">置顶</view>
+        <view class="bg-red">删除</view>
+      </view>
+    </view>
+  </view>

@@ -1,4 +1,5 @@
 // miniprogram/pages/SelfHelpDetail/SelfHelpDetail.js
+var app = getApp()
 Page({
 
   /**
@@ -76,12 +77,19 @@ Page({
    // 发布者姓名 - display.nickname
    // 发布者头像 - display.avatarUrl
    // 权限 -用于决定哪个按钮显示 -display.allowEveryone
-   navigateToChat:function(e){
-    wx.navigateTo({
-      url: '',
-    })
+  navigateToChat:function(e){
+
+      wx.navigateTo({
+        url: '../Chatlist/room/room?orderid='.concat(this.data.display._id,"&posterid=",app.globalData.openid,"&receiverid=",this.data.display.receiverid)
+      })
   },
 
+
+  //重新发布
+  repost:function(e){
+
+  },
+  
   onReady: function () {
 
   },

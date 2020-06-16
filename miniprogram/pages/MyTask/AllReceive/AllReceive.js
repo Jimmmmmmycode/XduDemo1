@@ -12,10 +12,7 @@ Component({
    * 组件的初始数据
    */
   data: {
-    display:'',
-    user_open_id:''
-
-
+    display:''
   },
 
   /**
@@ -23,18 +20,13 @@ Component({
    */
   attached(){
     var that = this 
-    that.setData(
-      {
-        user_open_id:getApp().globalData.openid
-      }
-    )
     console.log('对全局变量获得open_id成功',that.data.user_open_id)
     console.log('开始从数据库获取数据,一次限制获取10条')
     const db=wx.cloud.database()
     db.collection('help_info').limit(10).where({
       receivestatus:true
       }).where({
-        receiverid:that.data.user_open_id
+        receiverid:getApp().globalData.openid
       }).get({
       success:res=>{
         console.log('success')

@@ -28,9 +28,15 @@
   <view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
 
     <view class="cu-item arrow">
-      <navigator class="content" url="" hover-class="none">
+      <navigator class="content" url="/pages/Myinfo/regist/regist" >
         <text class="cuIcon-peoplefill text-green"></text>
         <text class="text-grey">个人认证</text>
+      </navigator>
+    </view>
+    <view class="cu-item arrow">
+      <navigator class="content" url="/pages/Myinfo/verify/verify" >
+        <text class="cuIcon-peoplefill text-green"></text>
+        <text class="text-grey">认证审核(仅管理员可用)</text>
       </navigator>
     </view>
    

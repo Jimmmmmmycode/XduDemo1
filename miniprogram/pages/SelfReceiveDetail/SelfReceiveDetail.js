@@ -1,4 +1,5 @@
 // miniprogram/pages/SelfReceiveDetail/SelfReceiveDetail.js
+var app = getApp()
 Page({
 
   /**
@@ -7,32 +8,18 @@ Page({
   data: {
     display:'',
     basicsList: [{
-      icon: 'usefullfill',
+      icon: 'edit',
       name: '已发布'
     }, {
-      icon: 'radioboxfill',
+      icon: 'loading',
       name: '待接单'
     }, {
-      icon: 'roundclosefill',
+      icon: 'creative',
       name: '进行中'
     }, {
-      icon: 'roundcheckfill',
+      icon: 'check',
       name: '已完成'
-    }, ],
-    
-    basicsList2: [ {
-      icon: 'usefullfill',
-      name: '已发布'
-    }, {
-      icon: 'radioboxfill',
-      name: '待派单'
-    }, {
-      icon: 'roundclosefill',
-      name: '进行中'
-    }, {
-      icon: 'roundcheckfill',
-      name: '已完成'
-    }, ],
+    }, ]
   },
 
   /**
@@ -66,7 +53,7 @@ Page({
    // 权限 -用于决定哪个按钮显示 -display.allowEveryone
   navigateToChat:function(e){
     wx.navigateTo({
-      url: '',
+      url: '../Chatlist/room/room?orderid='.concat(this.data.display._id,"&posterid=",this.data.display._openid,"&receiverid=",app.globalData.openid),
     })
   },
 

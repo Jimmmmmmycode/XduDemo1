@@ -21,9 +21,21 @@
         <view class="text-black text-bold">
            {{display[index]['title']}}
         </view>
+        <view wx:if="{{display[index].allowEveryone==true&&display[index].receivestatus==false&&display[index].cancelstatus==false}}" class="text-grey text-bold">
+           订单状态:待接单
+        </view>
+        <view wx:if="{{display[index].receivestatus==true&&display[index].finishstatus==false}}" class="text-grey text-bold">
+           订单状态:进行中
+        </view>
+        <view wx:if="{{display[index].receivestatus==true&&display[index].finishstatus==true}}" class="text-grey text-bold">
+           订单状态:已完成
+        </view>
+        <view wx:if="{{display[index].cancelstatus==true}}" class="text-grey text-bold">
+           订单状态:已取消
+        </view>
     </view>
 
-    <view wx:if="{{display[index]['fileIDs'].length!=0}}" class="grid flex-sub soild-top padding-lr col-1">
+    <view wx:if="{{display[index]['fileIDs'][0]}}" class="grid flex-sub soild-top padding-lr col-1">
         <image mode='aspectFill'  src="{{display[index]['fileIDs'][0]}}">
         </image>
     </view>

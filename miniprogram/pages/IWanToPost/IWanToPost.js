@@ -22,7 +22,8 @@ Page({
     allowEveryone:false,
     helpid: '',
     fileIDs : [] ,
-    postTime:''  // 发布时间
+    postTime:'' , // 发布时间
+    deadline:''
   },
 
 
@@ -31,7 +32,6 @@ Page({
     this.setData({
       title: e.detail.value       //  e - bindinput返回事件，在detail.value中存有当前输入文本框的值 
     })
-    console.log(e.detail.value)
   },
 
   // 获取详细内容输入到 page data
@@ -39,8 +39,6 @@ Page({
     this.setData({
       detail: e.detail.value
     })
-    console.log(e.detail.value)
-
   },
 
   // 获取支付金额输入到 page data
@@ -55,8 +53,6 @@ Page({
     this.setData({
       date: e.detail.value
     })
-
-    console.log(this.data.date)
   },
 
 
@@ -65,7 +61,6 @@ Page({
     this.setData({
       time: e.detail.value
     })
-    
   },
 
   // 设置页面数据sexindex和require_sex
@@ -165,7 +160,14 @@ Page({
       return;
     }
 
-    
+    var ddl = this.data.date.concat(this.data.time)
+
+    this.setData({
+      deadline:new Date(ddl)
+    }
+
+    )
+
     var that = this 
     var TIME = util.formatTime(new Date());
     that.setData({
@@ -218,9 +220,12 @@ Page({
         cancelstatus: false , // 是否已取消
         allowEveryone:that.data.allowEveryone , //是否同意所有人接单
         avatarurl: app.globalData.userInfo.avatarUrl, // 用户头像
-        nickname:app.globalData.userInfo.nickName,// 用户名
+        nickname: app.globalData.userInfo.nickName ,// 用户名
         fileIDs:that.data.fileIDs, // 用户上传的图片
-        receiverid:''
+        receiverid:'',
+        receiveravatarurl:'',
+        receivernickname:'',
+        
       }    
       ,
       success:res=>{

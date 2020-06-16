@@ -1,6 +1,6 @@
 <!--miniprogram/pages/MyTask/home/home.wxml-->
-<scroll-view scroll-x class="bg-gradual-blue nav text-center">
-  <view class="cu-item {{index==TabCur?'text-white cur':''}}" wx:for="{{tabtitle}}" wx:key bindtap="tabSelect" data-id="{{index}}">
+<scroll-view scroll-x class="bg-grey nav text-center">
+  <view class="cu-item {{index==TabCur?'text-orange cur':''}}" wx:for="{{tabtitle}}" wx:key bindtap="tabSelect" data-id="{{index}}">
     {{tabtitle[index]}}
   </view>
 </scroll-view>

@@ -12,7 +12,11 @@
     "pages/Chatlist/Chatlist",
     "pages/HelpDetail/HelpDetail",
     "pages/SelfHelpDetail/SelfHelpDetail",
-    "pages/SelfReceiveDetail/SelfReceiveDetail"
+    "pages/SelfReceiveDetail/SelfReceiveDetail",
+    
+    "pages/Myinfo/regist/regist",
+    "pages/Myinfo/verify/verify",
+    "pages/Chatlist/room/room"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

@@ -16,24 +16,19 @@ Component({
     menulist:[{
       value:1,
       name:'最新发布',
-      click:false,
     },
     {
       value:2,
       name:'价格由高到低',
-      click:false,
     },{
       value:3,
       name:'价格由低到高',
-      click:false,
     },{
       value:4,
       name:'截止时间由早到晚',
-      click:false,
     },{
       value:5,
       name:'截止时间由晚到早',
-      click:false,
     }
   ]
   },
@@ -45,9 +40,11 @@ Component({
   attached(){
     var that = this 
     const db=wx.cloud.database()
-    db.collection('help_info').limit(10).where({
+    db.collection('help_info').limit(20).where({
+        cancelstatus:false
+      }).where({
       receivestatus:false
-      }).get({
+      }).orderBy('postTime','desc').get({
       success:res=>{
         console.log('success')
         console.log(res.data)
@@ -96,8 +93,10 @@ Component({
       console.log(labelid)
       if(labelid==0){
         db.collection('help_info').limit(10).where({
+          cancelstatus:false
+          }).where({
           receivestatus:false
-          }).get({
+          }).orderBy('postTime','desc').get({
           success:res=>{
             console.log('success')
             console.log(res.data)
@@ -106,8 +105,6 @@ Component({
               modalName:null
             })
             console.log(that.data.display)}
-           
-
           ,
             fail:err=>{
               console.log(err)
@@ -130,8 +127,7 @@ Component({
                 console.log(err)
               }
           })
-          .then(console.log)
-          .catch(console.error)
+         
       }
       else if(labelid==2){
         db.collection('help_info').orderBy('payment', 'asc')
@@ -149,8 +145,7 @@ Component({
                 console.log(err)
               }
           })
-          .then(console.log)
-          .catch(console.error)
+         
       }
       else if(labelid==3){
         db.collection('help_info').orderBy('date', 'desc').orderBy('time','desc')
@@ -168,8 +163,6 @@ Component({
                 console.log(err)
               }
           })
-          .then(console.log)
-          .catch(console.error)
       }
       else if(labelid==4){
         db.collection('help_info').orderBy('date', 'asc').orderBy('time','asc')
@@ -187,8 +180,6 @@ Component({
                 console.log(err)
               }
           })
-          .then(console.log)
-          .catch(console.error)
       }
       this.hideModal(e)
     }
